@@ -1,0 +1,10 @@
+            var result = (ObjectResult)context.Result;
+            //ApiResultModel apiResultModel = new ApiResultModel();
+            //apiResultModel.code = 0;
+            //apiResultModel.message = "success";
+            //apiResultModel.data = result.Value;
+            //apiResultModel.statusCode = 0;
+
+
+            context.HttpContext.Response.Body.WriteAsync(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(apiResultModel))).AsTask();
+            context.HttpContext.Response.Body.Flush();
